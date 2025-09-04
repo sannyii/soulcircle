@@ -1,0 +1,8 @@
+{
+  "name": "soulcircle",
+  "version": "1.0.0",
+  "description": "Breathing rainbow circle AI chat",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  }
+}

@@ -1,0 +1,138 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #00111a, #000);
+  overflow: hidden;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 150, 255, 0.25), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(0, 255, 150, 0.25), transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(255, 0, 200, 0.25), transparent 60%);
+  animation: drift 30s linear infinite;
+  filter: blur(80px);
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#circle-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  animation: spin 20s linear infinite;
+}
+
+#breathing-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(red, orange, yellow, green, cyan, blue, violet, red);
+  animation: breathe 4s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+#chat {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#messages {
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.4;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.message.user {
+  align-self: flex-end;
+  background: rgba(0, 150, 200, 0.4);
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: rgba(50, 50, 150, 0.4);
+}
+
+#input-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#input-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(0, 200, 150, 0.6);
+  color: #fff;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
