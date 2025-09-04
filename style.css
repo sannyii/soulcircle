@@ -51,8 +51,19 @@ html, body {
   height: 100%;
   border-radius: 50%;
   background: conic-gradient(red, orange, yellow, green, cyan, blue, violet, red);
-  animation: breathe 4s ease-in-out infinite;
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+#breathing-circle.breathing {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+#breathing-circle.shake {
+  animation: shake 0.5s;
+}
+
+#breathing-circle.breathing.shake {
+  animation: breathe 4s ease-in-out infinite, shake 0.5s;
 }
 
 @keyframes breathe {
@@ -63,6 +74,13 @@ html, body {
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(4px, -4px); }
+  50% { transform: translate(-4px, 4px); }
+  75% { transform: translate(4px, 4px); }
 }
 
 #chat {
@@ -135,4 +153,46 @@ html, body {
 
 .hidden {
   display: none;
+}
+
+#settings-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: rgba(0, 200, 150, 0.6);
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#settings-modal .modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 260px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }
